@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Hello {{user_name}} test</h1>
+
+{% for elem in elems %}
+    <li><b>{{elem.span.string}}</b></li>
+    <li><b>{{elem.attrs['href']}}</b></li>
+{% endfor %}
+  
+{% endblock %}

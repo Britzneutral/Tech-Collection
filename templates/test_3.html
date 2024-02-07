@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if not f %}
+
+<h1>検索したキーワードにヒットする記事が見つかりませんでした。serchページに戻って他のキーワードを入力してみてください。</h1>
+<a href="{{url_for('serch_news')}}" class="btn">検索ページへ戻る</a>
+
+{% else %}
+
+<a href="{{url_for('serch_news')}}" class="btn">検索ページへ戻る</a>
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    {% for article in f%}
+    <div class="col">
+        <div class="card">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+            <div class="card-header">
+                <h5>{{article['title']}}</h5>
+            </div>
+                <p class="card-text">{{article['summary'][:200]}}...</p>
+            <div class="card-footer">
+                最終更新日時
+                <p>{{article['updated']}}</p>
+            </div>
+                <div class="card-body">
+                    <!-- URLリンクを作成 -->
+                    <a href="{{article['link']}}" class="card-link">URL</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Hello {{user_name}} RSS_test</h1>
+
+{% for article in f %}
+    <div class="card" style="width: 18rem;">
+        <!-- 見出し画像を設定 -->
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <div class="card-body">
+        <!-- カードのタイトルを設定 -->
+        <h5 class="card-title">{{article['title']}}</h5>
+        <!-- カードの本文を設定 -->
+        <p class="card-text">{{article['summary']}}</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-body-secondary">published:{{article['published']}}</small>
+        </div>
+        <ul class="list-group list-group-flush">
+        <!-- カードに含むアイテムの設定 -->
+        <li class="list-group-item">author:{{article['author']}}</li>
+        </ul>
+        <div class="card-body">
+        <!-- URLリンクを作成 -->
+        <a href="{{article['link']}}" class="card-link">URL</a>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
